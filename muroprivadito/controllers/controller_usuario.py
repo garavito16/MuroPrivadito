@@ -57,7 +57,6 @@ def login():
     }
     if(User.verifyDataLogin(user)):
         resultado = User.userXLogin(user)
-        print(resultado)
         if(resultado != None):
             if(bcrypt.check_password_hash(resultado.password,user["password"])):
                 session["usuario"] = resultado.nombres + " " + resultado.apellidos

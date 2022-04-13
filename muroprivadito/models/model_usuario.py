@@ -32,6 +32,7 @@ class User:
                     SELECT us.*, COUNT(m.id) as mensajes_enviados FROM usuarios us
                     LEFT JOIN mensajes m ON us.id = m.emisor_id
                     WHERE us.email = %(email)s
+                    GROUP BY us.id
                 '''
         resultado = connectToMySQL(cls.name_db).query_db(query,user)
         if(len(resultado) > 0):
